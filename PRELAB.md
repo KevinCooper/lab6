@@ -1,6 +1,6 @@
 #Lab6 Prelab<br>
 ##Pin layout<br>
-Sine the TA1 subsystem will be used, the pins P2.0 and P2.1 will be used for the left and right wheels respectively.  The side of the motor that the motor driver chip is hooked up to is not significantly important at the moment, since that can be switched if the direction it turns is not desired.<br>
+Sine the TA1 subsystem will be used, the pins P2.0 and P2.1 will be used for the left and right wheels respectively.  The side of the motor that the motor driver chip is hooked up to is not significantly important at the moment, since that can be switched if the direction it turns is not desired.  To allow for backward movement, P1.1 and P1.2 will be hooked up.  This will allow the voltage to be switched between the two terminals to be switched.<br>
 ##Movement<br>
 The forward movement will be done by activating both wheels in the same method.  Both the left and the right turns will be accomplished by calling a turn right/left wheel based on the requirements of the direction.  This will be accomplished by hooking up the pins mentioned previously to the motor driver chip.  Each of the two ports used on the motor driver chip will independently drive a wheel.<br>
 ##Subsystems<br>
