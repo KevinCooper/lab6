@@ -1,16 +1,19 @@
 #include <msp430.h> 
-
+void setupClock();
+void turnLeft();
+void turnRight();
+void moveForward();
 /*
  * main.c
  */
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
-
+    setupClock();
         while (1) {
-                __delay_cycles(1000000);
-                TACCR1 = 10;            // set duty cycle to 50/100 (50%)
-                __delay_cycles(1000000000);
-                TACCR1 = 20;            // set duty cycle to 75/100 (75%)
+        	turnLeft();
+        	__delay_cycles(1000000);
+        	turnRight();
+        	__delay_cycles(1000000);
             }
 
 	return 0;
@@ -27,12 +30,21 @@ void setupClock(){
 }
 
 void turnLeft(){
-    P1DIR |= BIT2;                // TA0CCR1 on P1.2
-    P1SEL |= BIT2;
-}
-void turnRight(){
+	//Undo any left wheel movement
+    P1DIR &= ~BIT2;                // TA0CCR1 on P1.2
+    P1SEL &= ~BIT2;
+    //Set up right turn movement
 	P2DIR |= BIT1;					//Set up P2.1
 	P2SEL |= BIT1;					//Set up P2.1
+
+}
+void turnRight(){
+	//Undo any right wheel movement
+	P2DIR &= ~BIT1;					//Set up P2.1
+	P2SEL &= ~BIT1;
+	//Set up left turn movement
+    P1DIR |= BIT2;                // TA0CCR1 on P1.2
+    P1SEL |= BIT2;
 }
 
 void moveForward(){
