@@ -7,8 +7,11 @@
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
     initRobot();
+    moveForward(100,35);
         while (1) {
-        		moveForward(8,3);
+        		//moveForward(80,30);
+        		//turnLeftWheel();
+        		//turnRightWheel();
             }
 	return 0;
 }
