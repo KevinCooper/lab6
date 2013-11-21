@@ -10,14 +10,13 @@ void moveForward();
  */
 int main(void) {
     WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
-    setupClock();
+    initRobot();
         while (1) {
-        	turnLeft();
+        	turnLeftWheel();
         	__delay_cycles(1000000);
-        	turnRight();
+        	turnRightWheel();
         	__delay_cycles(1000000);
             }
-
 	return 0;
 }
 
