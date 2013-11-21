@@ -1,10 +1,6 @@
 #include <msp430.h> 
 #include "robotLibrary/robotLibrary.h"
 
-void setupClock();
-void turnLeft();
-void turnRight();
-void moveForward();
 /*
  * main.c
  */
@@ -14,7 +10,11 @@ int main(void) {
         while (1) {
         	turnLeftWheel();
         	__delay_cycles(1000000);
+        	stopLeft();
+        	__delay_cycles(1000000);
         	turnRightWheel();
+        	__delay_cycles(1000000);
+        	stopRight();
         	__delay_cycles(1000000);
             }
 	return 0;
