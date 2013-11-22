@@ -8,12 +8,16 @@ int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;	// Stop watchdog timer
 	initRobot();
+	//turnLeftWheelBack();
+	//moveBackward(40, 40);
 	while (1) {
-		turnRightWheel();
-		turnLeftWheel();
+		leftTurn();
 		__delay_cycles(1000000);
-		stopRight();
-		stopLeft();
+		rightTurn();
+		__delay_cycles(1000000);
+		halfLeft();
+		__delay_cycles(1000000);
+		halfRight();
 		__delay_cycles(1000000);
 	}
 	return 0;
